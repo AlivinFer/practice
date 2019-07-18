@@ -1,6 +1,6 @@
-# time 2019/07/14
+# time 2019/07/14 -- 2019/07/18
 # author  Fer
-import first
+
 
 # 基本数据类型的操作
 """
@@ -80,7 +80,7 @@ print(x)
 #     print(j)
 # for i in range(0, 10):
 #     print(i)
-# 冒泡排序
+# 冒泡排序(错误还未修正）
 # for j in range(len(rows)):
 #     for k in range(j + 1):
 #         if rows[j] > rows[k]:
@@ -251,7 +251,6 @@ import first
 print(first.sum1(2, 3))
 """
 
-
 # 包裹和解包裹
 """
 # 在调用时不知道会传递多少个参数时，采用包裹(packing)传递
@@ -286,3 +285,104 @@ dict1 = {'a': 1, 'b': 2, 'c': 3}
 func2(**dict1)
 """
 
+# 循环设计
+"""
+S = 'ascfvjhkcvhjk'
+for i in range(0, len(S), 2):  # 上限、下限、步长
+    print(S[i])
+"""
+
+# enumerate()函数 （枚举函数）
+"""
+S1 = 'zxcvbnm'
+for (index, char) in enumerate(S1):
+    print(index, char)
+"""
+
+# zip()函数 （若存在多个等长的序列，每次循环可从各个序列分别取出一个元素）
+"""
+ta = [1, 2, 3]
+tb = [7, 8, 9]
+tc = ['a', 'b', 'c']
+for (a, b, c) in zip(ta, tb, tc):  # 从各个序列从左到右依次取出一个元素，合并成一个tuple
+    print(a, b, c)
+"""
+
+# 循环对象
+"""
+# (__next__方法）
+p = open('test1.txt', 'w')
+p.write('tom, 11, 55\nsill, 12, 88\nfer, 13, 85\ngb, 24, 88')
+p.flush()
+p.close()
+for line in open('test1.txt'):
+    print(line)
+
+
+# 迭代器&生成器&表推导
+x1 = [1, 3, 5]
+y1 = [9, 12, 13]
+L = [x ** 2 for(x, y) in zip(x1, y1) if y > 10]
+print(L)
+"""
+
+# map函数
+"""
+# lambda函数，其生成一个函数对象。map()为内置函数，有两个参数，第一个是函数对象
+re = map((lambda x, y: x+y), [1, 2, 3], [6, 7, 8]) # map()返回的是循坏对象
+print(re.__next__())
+print(re.__next__())
+print(re.__next__())
+"""
+
+# filter函数
+"""
+# 可通过读入的函数来筛选数据，且返回的是循坏对象
+def func(a):
+    if a > 100:
+        return True
+    else:
+        return False
+
+
+s1 = [10, 56, 101, 120, 112]
+for i in filter(func, s1):
+    print(i)
+"""
+
+# 异常处理
+"""
+# 类似于Java的做法
+re = iter(range(5))
+
+try:
+    for i in range(10):
+        print(re.__next__())
+except StopIteration:
+    print('here is end', i)
+finally:
+    print('what are you doing now')
+"""
+
+
+# 动态类型(类似于值传递和址传递)
+# 引用和对象分离，对象是内存中存储数据的实体，引用指向对象
+"""
+def f(x):
+    x = 100
+    print(x)
+
+
+a = 1
+f(a)
+print(a)
+
+def f(x1):
+    x1[0] = 100
+    print(x1)
+
+
+a1 = [1, 2, 3]
+f(a1)
+print(a1)
+"""
