@@ -353,7 +353,7 @@ for i in filter(func, s1):
 # 异常处理
 """
 # 类似于Java的做法
-re = iter(range(5))
+re = iter(range(5))  # iter()函数可以将表、字典等容器变为循环器
 
 try:
     for i in range(10):
